@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.text.TextUtils" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.kshetra.hotel.ui.activity.home.HomeViewModel" />
+
+        <variable
+            name="handler"
+            type="com.kshetra.hotel.ui.activity.home.HomeHandler" />
+    </data>
+    <!-- <androidx.core.widget.NestedScrollView
+         style="@style/NestedScrollBarStyle"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:background="@color/blue_click_old">-->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/lyt_login_box"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:context=".activity.LoginActivity">
+        <!--
+
+        android:background="@drawable/bg_login"
+                    <ImageView
+                        android:id="@+id/iv_login_logo"
+                        android:layout_width="250dp"
+                        android:layout_height="250dp"
+                        android:layout_marginTop="50dp"
+                        android:scaleType="fitCenter"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/logo" />
+        -->
+      <!--  <ImageView
+            android:id="@+id/img_logo"
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            app:srcCompat="@drawable/logo_kshetra"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintBottom_toTopOf="@+id/barrier_switch"/>-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" >
+            <!--
+            app:layout_constraintBottom_toTopOf="@+id/barrier_switch"-->
+            <com.denzcoskun.imageslider.ImageSlider
+                android:id="@+id/image_slider"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:iss_auto_cycle="true"
+                app:iss_selected_dot="@drawable/ic_dot"
+                app:iss_unselected_dot="@drawable/ic_add"
+                app:iss_period="1000"
+                app:iss_placeholder="@drawable/logo_kshetra"
+                app:iss_delay="0"/>
+        </RelativeLayout>
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier_switch"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            app:barrierDirection="top"
+            app:constraint_referenced_ids="lyt_home,lyt_login" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/lyt_home"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            android:background="@drawable/rounded_bg_login"
+            android:elevation="20dp"
+            app:layout_constraintVertical_chainStyle="packed"
+            android:paddingLeft="@dimen/text_head_size"
+            android:paddingRight="@dimen/text_head_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/barrier_switch"
+            tools:visibility="visible"
+            android:visibility="@{viewModel.isLoginClicked()? View.GONE : View.VISIBLE}">
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_goToCustomerFeed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="70dp"
+                android:background="@color/yellow"
+                android:gravity="center"
+                android:minWidth="150dp"
+                android:minHeight="50dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:onClick="@{(view)->handler.goToCustomerFeedForm(view)}"
+                android:text="@string/add_your_customer"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="@+id/lyt_home"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+            <TextView
+                android:id="@+id/txt_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/text_head_size"
+                android:text="@string/btn_log_in"
+                android:textColorHint="#000"
+                android:textStyle="italic"
+                android:onClick="@{(view)->handler.goToLogin(view)}"
+                android:textColor="@color/brown"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_goToCustomerFeed" /><!--
+                android:onClick="@{(view)->handler.goToForgotPassword(view)}"-->
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <!--
+            android:visibility="@{viewModel.isForgotPasswordClicked()? View.GONE : View.VISIBLE}"-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/lyt_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="30dp"
+                android:background="@drawable/rounded_bg_login"
+                android:elevation="20dp"
+                app:layout_constraintVertical_chainStyle="packed"
+                android:paddingLeft="@dimen/text_head_size"
+                android:paddingRight="@dimen/text_head_size"
+                android:visibility="@{viewModel.isLoginClicked()? View.VISIBLE : View.GONE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/barrier_switch"
+                tools:visibility="gone">
+
+                <TextView
+                    android:id="@+id/txt_head"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/head_margin"
+                    android:text="@string/text_login"
+                    android:textSize="@dimen/text_head_size"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+                <!--
+                                <ImageView
+                                    android:id="@+id/img_userName"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="30dp"
+                                    android:src="@drawable/ico_user"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/txt_head" />-->
+                <EditText
+                    android:id="@+id/txt_login_email_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:background="@null"
+                    android:inputType="textEmailAddress"
+                    android:drawableStart="@drawable/ic_password"
+                    android:drawablePadding="@dimen/text_left_margin"
+                    android:error="@{viewModel.emailError}"
+                    android:hint="@string/label_email_address"
+                    android:autofillHints="@string/label_email_address"
+                    android:maxLength="30"
+                    android:singleLine="true"
+                    android:text="@={viewModel.email}"
+                    android:textColor="@color/text_2"
+                    android:textSize="@dimen/text_size"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_head" />
+
+
+                <View
+                    android:id="@+id/view_UserName"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.3dp"
+                    android:layout_marginTop="@dimen/activity_horizontal_margin"
+                    android:background="@color/text_2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_login_email_address" />
+                <!--
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/img_password"
+                                    android:src="@drawable/ico_password"
+                                    android:layout_marginTop="@dimen/activity_horizontal_margin"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/view_UserName"/>-->
+                <EditText
+                    android:id="@+id/txt_login_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@null"
+                    android:drawableStart="@drawable/ic_password"
+                    android:drawablePadding="@dimen/text_left_margin"
+                    android:error="@{viewModel.passwordError}"
+                    android:hint="@string/label_password"
+                    android:autofillHints="@string/label_password"
+                    android:inputType="textPassword"
+                    android:maxLength="20"
+                    android:singleLine="true"
+                    android:text="@={viewModel.password}"
+                    android:textColor="@color/text_2"
+                    android:textSize="@dimen/text_size"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view_UserName" />
+
+
+                <View
+                    android:id="@+id/view_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.3dp"
+                    android:layout_marginTop="@dimen/activity_horizontal_margin"
+                    android:background="@color/text_1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_login_password" />
+                <!--
+                                <CheckBox
+                                    android:id="@+id/cb_login_remember_me"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="20dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginEnd="20dp"
+                                    android:drawablePadding="10dp"
+                                    android:gravity="center_vertical"
+                                    android:text="@string/label_remember_me"
+                                    android:textColor="@color/white"
+                                    app:layout_constraintBottom_toTopOf="@+id/btn_welcome_email_login"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/til_login_password" />-->
+                <!--android:theme="@style/CheckBox"-->
+
+                <!-- android:checked="@={viewModel.isRememberMe()}"-->
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_Login"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginBottom="70dp"
+                    android:background="@color/yellow"
+                    android:gravity="center"
+                    android:minWidth="150dp"
+                    android:minHeight="50dp"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:text="@string/btn_log_in"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size"
+                    android:textStyle="bold"
+                    android:onClick="@{(view)->handler.performLogin(view)}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view_password" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <!--
+                android:onClick="@{(view)->handler.goToForgotPassword(view)}"-->
+     <!--   <include
+            android:id="@+id/card_progress"
+            layout="@layout/layout_progress" />-->
+
+        <!--
+        android:fontFamily="@font/roboto"-->
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <!--
+      </androidx.core.widget.NestedScrollView>-->
+</layout>

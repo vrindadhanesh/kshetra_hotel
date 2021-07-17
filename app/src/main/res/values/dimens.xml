@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="cust_details_margin">20dp</dimen>
+    <dimen name="edttxt_margintop">30dp</dimen>
+    <dimen name="edttext_other_margintop">20dp</dimen>
+</resources>

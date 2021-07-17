@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">kshetra</string>
+    <string name="btn_dismiss">Dismiss</string>
+    <string name="message_app_needs_permission">This app needs permission to use this feature. You can grant them in app settings.</string>
+    <string name="btn_log_in">Log In</string>
+    <string name="add_your_customer">Add Your Customer</string>
+    <string name="text_login">Login</string>
+    <string name="label_email_address">User Name</string>
+    <string name="label_password">Password</string>
+    <string name="label_add_details">Add Customer Details</string>
+    <string name="label_name">Name</string>
+    <string name="label_address">Address</string>
+    <string name="label_email">Email</string>
+    <string name="label_nationality">Nationality</string>
+    <string name="label_occupation">Occupation</string>
+    <string name="label_tel_number">Tel Number:</string>
+    <string name="label_visit_purpose">Purpose of visit</string>
+    <string name="label_stay_duration">Stay duration</string>
+    <string name="label_coming_from">Coming from</string>
+    <string name="label_proceeding_to">Proceeding to</string>
+    <string name="label_arrival_in_hotel">Arrival in hotel</string>
+    <string name="label_department_in_hotel">Department in hotel</string>
+    <string name="label_date">Date</string>
+    <string name="label_time">Time</string>
+    <string name="btn_addd">Add</string>
+    <string name="btn_submit">Submit</string>
+</resources>
